@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
+
+
+    sourceSets.main {
+        jniLibs.srcDir 'jni'
+        jni.srcDirs = [] //disable automatic ndk-build call
+    }
+
+    defaultConfig {
+        applicationId "cc.dot.engine.example"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+
+        renderscriptTargetApi 16
+        renderscriptSupportModeEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.squareup.okhttp3:okhttp:3.5.0'
+    compile project(':DotVoice')
+    compile project(':Camerafilters')
+    compile 'com.zhy:okhttputils:2.0.0'
+    compile project(':DotVoice')
+
+
+}
