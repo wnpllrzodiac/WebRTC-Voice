@@ -4,7 +4,7 @@
 
 ----
 
-#WebRTC是什么
+# WebRTC是什么
 WebRTC is a free, open project that provides browsers and mobile applications with Real-Time Communications (RTC) capabilities via simple APIs. The WebRTC components have been optimized to best serve this purpose.  
 
 Our mission: To enable rich, high-quality RTC applications to be developed for the browser, mobile platforms, and IoT devices, and allow them all to communicate via a common set of protocols.
@@ -19,7 +19,7 @@ rtc是由谷歌、火狐、欧朋甚至更多共同支持的，目前主要由�
 
 ----
 
-#WebRTC所需要的三个服务器
+# WebRTC所需要的三个服务器
 > 虽然rtc可以实现端对端通信，也可以实现利用服务器中转的通信，但是它并没有我们想象中的那么 简单，我们需要有三个服务器来维护我们的通信的过程
 
 - 房间服务器(Room Server)
@@ -40,15 +40,19 @@ rtc是由谷歌、火狐、欧朋甚至更多共同支持的，目前主要由�
   3. ICE协议是结合了以上两种的综合性的解决方案，是通过offer/answer模型建立基于UDP的通讯。ICE是offer/answer模型的扩展，通过在offer和answer的SDP(Session Description Protocol)里面包含多种IP地址和端口，然后对本地SDP和远程SDP里面的IP地址进行配对，然后通过P2P连通性检查进行连通性测试工作，如果测试通过即表明该传输地址对可以建立连接。其中IP地址和端口（也就是地址）有以下几种：本机地址、通过STUN服务器反射后获取的server-reflexive地址（内网地址被NAT映射后的地址）、relayed地址（和TURN转发服务器相对应的地址）及Peer reflexive地址等。
 
 ----
-#WebRTC的使用
 
-###简介
+
+
+
+WebRTC的使用
+
+### 简介
 其实WebRTC是在全平台提供较为类似的接口的，逻辑更是完全一样，所以做别的开发的，也可以了解一下这个流程。
 
 这里介绍的是经过服务器中转的多端语音的大概的流程：
 
 首先说一下，为什么目前我只做了语音，因为经过服务器中转之后，每个终端需要做的事情其实很简单，就是将本地的视频流或者语音流进行上传，然后接收来自远端的流，在上传方面语音流和视频流并没有什么区别但是涉及到接收的时候，语音流和视频流就有了区别，因为语音流，即使是再多我们也可以只接收一个，因为语音流是非常容易合并在一起的，我们可以在服务端做一个语音流合并的操作，所以我们每一个终端只需要接收一个流就可以，但是视频流不可以这么做，我们需要同时维护多个视频流。
-###流程
+### 流程
 假设我们现在具有多个终端和一个服务器，想要通信，那么我们只要所有的终端都做同一件事情就可以，那就是上传本地流，接收服务器的流，就可以了。
 
 假设我们想要实现客户端A和服务器之间的通信：
@@ -105,7 +109,7 @@ a=rtpmap:34 H263/90000
 
 
 
-###主要代码
+### 主要代码
 
 ````
 获取token
