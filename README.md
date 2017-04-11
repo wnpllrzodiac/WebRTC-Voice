@@ -391,7 +391,7 @@ public class DotPeer implements SdpObserver, PeerConnection.Observer{
 ````
 
 ````
-本地流的初始化
+本地流初始化
 
 private MediaStream localStream;
 localStream = peerConnectionFactory.createLocalMediaStream("ARDAMS");
